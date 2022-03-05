@@ -19,7 +19,7 @@ setup(
 
     long_description_content_type='text/markdown',
 
-    url='https://github.com/ACRA-FL/svhnL.git',
+    url='https://github.com/nipdep/svhnL.git',
 
     author='nipdep',
 
@@ -58,7 +58,7 @@ setup(
     },
 
     project_urls={  # Optional
-        'Bug Reports': 'https://github.com/ACRA-FL/svhnL/issues',
-        'Source': 'https://github.com/ACRA-FL/svhnL/',
+        'Bug Reports': 'https://github.com/nipdep/svhnL/issues',
+        'Source': 'https://github.com/nipdep/svhnL/',
     },
 )
