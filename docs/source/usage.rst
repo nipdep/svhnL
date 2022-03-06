@@ -24,6 +24,7 @@ and extract the downloaded .tar.gz file. you can use ``svhnl.download()`` functi
 .. autofunction:: svhnl.download
 
 Code Example:
+
 .. code-block:: python
    >>>> import svhnl
    >>>> train_dt_filename = svhnl.download(extract=False)
@@ -42,6 +43,7 @@ and generate more flexible and light-weight .json annotation file.
 .. autofunction:: svhnl.ann_to_json
 
 Code Example:
+
 .. code-block:: python
    >>>> import svhnl
    >>>> svhnl.ann_to_json(file_path='./train/digitStruct.mat', save_path='./svhn_ann.json', bbox_type='normalize')
@@ -59,6 +61,7 @@ and generate more operatable and light-weight .csv annotation file.
 .. autofunction:: svhnl.ann_to_csv
 
 Code Example:
+
 .. code-block:: python
    >>>> import svhnl
    >>>> svhnl.ann_to_csv(file_path='./train/digitStruct.mat', save_path='./svhn_ann.csv', bbox_type='normalize')
@@ -76,6 +79,7 @@ with digit cropping, RGB to Gray-scale conversion and number of digit limiting a
 .. autofunction:: svhnl.gen_dataset
 
 Code Example:
+
 .. code-block:: python
    >>>> import svhnl
    >>>> image_np, ann_dict = svhnl.gen_dataset(image_path='../data/svhn/train', mat_path='../data/svhn/train/digitStruct.mat')
