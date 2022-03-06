@@ -47,8 +47,8 @@ Code Example:
 
 .. code-block:: python
 
-   >>>> import svhnl
-   >>>> svhnl.ann_to_json(file_path='./train/digitStruct.mat', save_path='./svhn_ann.json', bbox_type='normalize')
+   import svhnl
+   svhnl.ann_to_json(file_path='./train/digitStruct.mat', save_path='./svhn_ann.json', bbox_type='normalize')
 
 The function supports both Normalilzed {top, left, width, height} format and KITTI {xmin, ymin, xmax, ymax} format.
 For further instruction follow to API page; :ref:`ann_to_json`
