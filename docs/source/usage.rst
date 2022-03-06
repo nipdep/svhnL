@@ -18,7 +18,7 @@ Functionalities
 Dataset Download & extract
 --------------------------
 
-To download SVHN dataset [train, test or extra] from `the original svhn dataset <http://ufldl.stanford.edu/housenumbers/>`_
+To download SVHN dataset [train, test or extra] from `the original svhn dataset <http://ufldl.stanford.edu/housenumbers>`_
 and extract the downloaded .tar.gz file. you can use ``svhnl.download()`` function:
 
 .. autofunction:: svhnl.download
@@ -26,6 +26,7 @@ and extract the downloaded .tar.gz file. you can use ``svhnl.download()`` functi
 Code Example:
 
 .. code-block:: python
+
    >>>> import svhnl
    >>>> train_dt_filename = svhnl.download(extract=False)
    './data/train.tar.gz'
@@ -37,7 +38,7 @@ For further instruction follow to API page; :ref:`download`
 Convert Annotation file into JSON
 ---------------------------------
 
-To read the .mat annotation file provided with `the original svhn dataset <http://ufldl.stanford.edu/housenumbers/>`_
+To read the .mat annotation file provided with `the original svhn dataset <http://ufldl.stanford.edu/housenumbers>`_
 and generate more flexible and light-weight .json annotation file.
 
 .. autofunction:: svhnl.ann_to_json
@@ -45,6 +46,7 @@ and generate more flexible and light-weight .json annotation file.
 Code Example:
 
 .. code-block:: python
+
    >>>> import svhnl
    >>>> svhnl.ann_to_json(file_path='./train/digitStruct.mat', save_path='./svhn_ann.json', bbox_type='normalize')
 
@@ -55,7 +57,7 @@ For further instruction follow to API page; :ref:`ann_to_json`
 Convert Annotation file into csv
 --------------------------------
 
-To read the .mat annotation file provided with `the original svhn dataset <http://ufldl.stanford.edu/housenumbers/>`_
+To read the .mat annotation file provided with `the original svhn dataset <http://ufldl.stanford.edu/housenumbers>`_
 and generate more operatable and light-weight .csv annotation file.
 
 .. autofunction:: svhnl.ann_to_csv
@@ -63,6 +65,7 @@ and generate more operatable and light-weight .csv annotation file.
 Code Example:
 
 .. code-block:: python
+
    >>>> import svhnl
    >>>> svhnl.ann_to_csv(file_path='./train/digitStruct.mat', save_path='./svhn_ann.csv', bbox_type='normalize')
 
@@ -81,6 +84,7 @@ with digit cropping, RGB to Gray-scale conversion and number of digit limiting a
 Code Example:
 
 .. code-block:: python
+
    >>>> import svhnl
    >>>> image_np, ann_dict = svhnl.gen_dataset(image_path='../data/svhn/train', mat_path='../data/svhn/train/digitStruct.mat')
 
