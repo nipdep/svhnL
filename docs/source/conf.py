@@ -2,12 +2,12 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'svhnL'
+copyright = '2022, nipdep'
+author = 'nipdep'
 
-release = '0.1'
-version = '0.1.0'
+release = '0.0.2'
+version = '0.0.2'
 
 # -- General configuration
 
