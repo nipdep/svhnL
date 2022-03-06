@@ -18,7 +18,7 @@ Functionalities
 Dataset Download & extract
 --------------------------
 
-To download SVHN dataset [train, test or extra] from `the original svhn dataset <http://ufldl.stanford.edu/housenumbers/>`
+To download SVHN dataset [train, test or extra] from `the original svhn dataset <http://ufldl.stanford.edu/housenumbers/>`_
 and extract the downloaded .tar.gz file. you can use ``svhnl.download()`` function:
 
 .. autofunction:: svhnl.download
@@ -37,7 +37,7 @@ For further instruction follow to API page; :ref:`download`
 Convert Annotation file into JSON
 ---------------------------------
 
-To read the .mat annotation file provided with `the original svhn dataset <http://ufldl.stanford.edu/housenumbers/>`
+To read the .mat annotation file provided with `the original svhn dataset <http://ufldl.stanford.edu/housenumbers/>`_
 and generate more flexible and light-weight .json annotation file.
 
 .. autofunction:: svhnl.ann_to_json
@@ -55,7 +55,7 @@ For further instruction follow to API page; :ref:`ann_to_json`
 Convert Annotation file into csv
 --------------------------------
 
-To read the .mat annotation file provided with `the original svhn dataset <http://ufldl.stanford.edu/housenumbers/>`
+To read the .mat annotation file provided with `the original svhn dataset <http://ufldl.stanford.edu/housenumbers/>`_
 and generate more operatable and light-weight .csv annotation file.
 
 .. autofunction:: svhnl.ann_to_csv
