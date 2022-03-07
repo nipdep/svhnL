@@ -69,7 +69,7 @@ convert .mat file into .json file
 
 **Output view** : 
 
-.. list-table:: Parameter Description
+.. list-table:: train.csv
    :widths: 25 25 25 25 25 25
    :header-rows: 1
 

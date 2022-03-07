@@ -66,8 +66,8 @@ Code Example:
 
 .. code-block:: python
 
-   >>>> import svhnl
-   >>>> svhnl.ann_to_csv(file_path='./train/digitStruct.mat', save_path='./svhn_ann.csv', bbox_type='normalize')
+   import svhnl
+   svhnl.ann_to_csv(file_path='./train/digitStruct.mat', save_path='./svhn_ann.csv', bbox_type='normalize')
 
 The function supports both Normalilzed {top, left, width, height} format and KITTI {xmin, ymin, xmax, ymax} format.
 For further instruction follow to API page; :ref:`ann_to_csv`
@@ -85,8 +85,8 @@ Code Example:
 
 .. code-block:: python
 
-   >>>> import svhnl
-   >>>> image_np, ann_dict = svhnl.gen_dataset(image_path='../data/svhn/train', mat_path='../data/svhn/train/digitStruct.mat')
+   import svhnl
+   image_np, ann_dict = svhnl.gen_dataset(image_path='../data/svhn/train', mat_path='../data/svhn/train/digitStruct.mat')
 
 For further instruction follow to API page; :ref:`gen_dataset`
 
