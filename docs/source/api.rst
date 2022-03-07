@@ -3,9 +3,10 @@ API
 
 .. data:: download
 
-Function Description : 
-download SVHN dataset from `the original svhn dataset <http://ufldl.stanford.edu/housenumbers>`_
-Optional features:
+Function Description : |br|
+download SVHN dataset from `the original svhn dataset <http://ufldl.stanford.edu/housenumbers>`_ |br|
+Optional features: |br|
+
 * extract downloaded dataset
 * delete .tar.gz file after downloading
 
@@ -32,12 +33,16 @@ Optional features:
      - False
      - whether or not delete the .tar file after extraction
 
+Output view : |br|
+| `../data/svhn/train` : params : ('train', '../data/svhn', extract=True)
+| `../data/svhn/train.tar.gz` : params : ('train', '../data/svhn', extract=False)
 
 .. data:: ann_to_csv
 
 Function Description :
 convert .mat file into .json file
 Optional features:
+
 * set bbox format to KITTI / Normalilzed
 
 .. list-table:: Parameter Description
@@ -57,11 +62,39 @@ Optional features:
      - 'normalize'
      - two type bounding box declaration format whether 'normalize' or 'kitti'
 
+Output view : |br|
+
+.. code-block:: JSON
+
+   [
+      {
+         "boxes": [
+         {
+            "width": 81.0,
+            "top": 77.0,
+            "label": 1.0,
+            "left": 246.0,
+            "height": 219.0
+         },
+         {
+            "width": 96.0,
+            "top": 81.0,
+            "label": 9.0,
+            "left": 346.0,
+            "height": 119.0
+         }
+         ],
+         "filename": "1.png"
+      },
+      ...
+   ]
+
 .. data:: ann_to_json
 
 Function Description :
 convert .mat file into .csv file
 Optional features:
+
 * set bbox format to KITTI / Normalilzed
 
 .. list-table:: Parameter Description
@@ -81,6 +114,30 @@ Optional features:
      - 'normalize'
      - two type bounding box declaration format whether 'normalize' or 'kitti'
 
+Output view : |br|
+
+.. list-table:: Parameter Description
+   :widths: 25 25 50
+   :header-rows: 1
+
+   * - filename
+     - class
+     - left
+     - top
+     - width
+     - height
+   * - 1.png
+     - 1
+     - 81.0
+     - 77.0
+     - 246.0
+     - 219.0
+   * - 1.png
+     - 9
+     - 96.0
+     - 81.0
+     - 346.0
+     - 119.0
 
 .. data:: gen_dataset
 
@@ -88,6 +145,7 @@ Optional features:
 Function Description :
 generate image dataset and related readily accessible annotation file
 Optional features:
+
 * convert RGB image to Gray-scale
 * set min digits present threshold
 * set max digits present threshold
@@ -132,3 +190,38 @@ Optional features:
      - False
      - whether or not save the returning files
 
+.. code-block:: JSON
+
+   {
+      "annotations": [
+         {
+               "id": "1",
+               "image_id": "1",
+               "category_id": 1,
+               "area": 22165,
+               "bbox": [170, 114, 313, 269],
+               "ignore": "0",
+               "iscrowd": "0"
+         },
+         .
+         .
+         ],
+      "images": [
+         {
+               "file_name": "1.jpg",
+               "height": 413,
+               "width": 413,
+               "id": "1"
+         },
+         .
+         .
+         ],
+      "categories": [
+         {
+               "id": 1,
+               "name": 1,
+               "supercategory": "none"
+         },
+         .
+         ],
+   }
