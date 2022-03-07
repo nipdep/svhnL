@@ -3,9 +3,11 @@ API
 
 .. data:: download
 
-Function Description : |br|
-download SVHN dataset from `the original svhn dataset <http://ufldl.stanford.edu/housenumbers>`_ |br|
-Optional features: |br|
+**Function Description** : 
+
+download SVHN dataset from `the original svhn dataset <http://ufldl.stanford.edu/housenumbers>`_ 
+
+**Optional features** : 
 
 * extract downloaded dataset
 * delete .tar.gz file after downloading
@@ -33,15 +35,18 @@ Optional features: |br|
      - False
      - whether or not delete the .tar file after extraction
 
-Output view : |br|
+**Output view** : 
+
 | `../data/svhn/train` : params : ('train', '../data/svhn', extract=True)
 | `../data/svhn/train.tar.gz` : params : ('train', '../data/svhn', extract=False)
 
 .. data:: ann_to_csv
 
-Function Description :
+**Function Description** :
+
 convert .mat file into .json file
-Optional features:
+
+**Optional features** : 
 
 * set bbox format to KITTI / Normalilzed
 
@@ -62,7 +67,59 @@ Optional features:
      - 'normalize'
      - two type bounding box declaration format whether 'normalize' or 'kitti'
 
-Output view : |br|
+**Output view** : 
+
+.. list-table:: Parameter Description
+   :widths: 25 25 25 25 25 25
+   :header-rows: 1
+
+   * - filename
+     - class
+     - left
+     - top
+     - width
+     - height
+   * - 1.png
+     - 1
+     - 81.0
+     - 77.0
+     - 246.0
+     - 219.0
+   * - 1.png
+     - 9
+     - 96.0
+     - 81.0
+     - 346.0
+     - 119.0
+
+.. data:: ann_to_json
+
+**Function Description** :
+
+convert .mat file into .csv file
+
+**Optional features** : 
+
+* set bbox format to KITTI / Normalilzed
+
+.. list-table:: Parameter Description
+   :widths: 25 25 50
+   :header-rows: 1
+
+   * - parameter
+     - default value
+     - description
+   * - file_path
+     - None
+     - .mat file path Ex : relative path '../data/digitStruct.mat' or complete path 'C:/usr/local/data/digitStruct.mat'
+   * - save_path
+     - None
+     - .csv file directory *Other than .csv file complete folder directory must exists in the system Ex : '../data/train.json'
+   * - bbox_type
+     - 'normalize'
+     - two type bounding box declaration format whether 'normalize' or 'kitti'
+
+**Output view** : 
 
 .. code-block:: JSON
 
@@ -89,62 +146,14 @@ Output view : |br|
       ...
    ]
 
-.. data:: ann_to_json
-
-Function Description :
-convert .mat file into .csv file
-Optional features:
-
-* set bbox format to KITTI / Normalilzed
-
-.. list-table:: Parameter Description
-   :widths: 25 25 50
-   :header-rows: 1
-
-   * - parameter
-     - default value
-     - description
-   * - file_path
-     - None
-     - .mat file path Ex : relative path '../data/digitStruct.mat' or complete path 'C:/usr/local/data/digitStruct.mat'
-   * - save_path
-     - None
-     - .csv file directory *Other than .csv file complete folder directory must exists in the system Ex : '../data/train.json'
-   * - bbox_type
-     - 'normalize'
-     - two type bounding box declaration format whether 'normalize' or 'kitti'
-
-Output view : |br|
-
-.. list-table:: Parameter Description
-   :widths: 25 25 50
-   :header-rows: 1
-
-   * - filename
-     - class
-     - left
-     - top
-     - width
-     - height
-   * - 1.png
-     - 1
-     - 81.0
-     - 77.0
-     - 246.0
-     - 219.0
-   * - 1.png
-     - 9
-     - 96.0
-     - 81.0
-     - 346.0
-     - 119.0
-
 .. data:: gen_dataset
 
 
-Function Description :
+**Function Description** :
+
 generate image dataset and related readily accessible annotation file
-Optional features:
+
+**Optional features** : 
 
 * convert RGB image to Gray-scale
 * set min digits present threshold
@@ -189,6 +198,8 @@ Optional features:
    * - save
      - False
      - whether or not save the returning files
+
+**Output view** : 
 
 .. code-block:: JSON
 
