@@ -6,7 +6,7 @@ Usage
 Installation
 ============
 
-To use schnL, first install it using pip:
+To use svhnL, first install it using pip:
 
 .. code-block:: console
 
@@ -18,8 +18,8 @@ Functionalities
 Dataset Download & extract
 --------------------------
 
-To download SVHN dataset [train, test or extra] from `the original svhn dataset <http://ufldl.stanford.edu/housenumbers>`_
-and extract the downloaded .tar.gz file. you can use ``svhnl.download()`` function:
+To download the original SVHN dataset [train, test or extra] from `their website <http://ufldl.stanford.edu/housenumbers>`_
+and extract the downloaded .tar.gz file, use:
 
 .. autofunction:: svhnl.download
 
@@ -33,13 +33,13 @@ Code Example:
    >>>> test_dt_folder_path = svhnl.download(dataset_type='test', save_path='../dataset/svhn', extract=True, force=False, del_zip=False)
    '../dataset/svhn/test'
 
-For further instruction follow to API page; :ref:`download`
+For further instruction visit the API page; :ref:`download`
 
 Convert Annotation file into JSON
 ---------------------------------
 
 To read the .mat annotation file provided with `the original svhn dataset <http://ufldl.stanford.edu/housenumbers>`_
-and generate more flexible and light-weight .json annotation file.
+and generate more flexible and light-weight .json annotation file, use:
 
 .. autofunction:: svhnl.ann_to_json
 
@@ -50,15 +50,15 @@ Code Example:
    import svhnl
    svhnl.ann_to_json(file_path='./train/digitStruct.mat', save_path='./svhn_ann.json', bbox_type='normalize')
 
-The function supports both Normalilzed {top, left, width, height} format and KITTI {xmin, ymin, xmax, ymax} format.
-For further instruction follow to API page; :ref:`ann_to_json`
+The function supports both Normalized {top, left, width, height} format and KITTI {xmin, ymin, xmax, ymax} format.
+For further instruction visit the API page; :ref:`ann_to_json`
 
 
 Convert Annotation file into csv
 --------------------------------
 
 To read the .mat annotation file provided with `the original svhn dataset <http://ufldl.stanford.edu/housenumbers>`_
-and generate more operatable and light-weight .csv annotation file.
+and generate more operatable and light-weight .csv annotation file, use:
 
 .. autofunction:: svhnl.ann_to_csv
 
@@ -70,14 +70,14 @@ Code Example:
    svhnl.ann_to_csv(file_path='./train/digitStruct.mat', save_path='./svhn_ann.csv', bbox_type='normalize')
 
 The function supports both Normalilzed {top, left, width, height} format and KITTI {xmin, ymin, xmax, ymax} format.
-For further instruction follow to API page; :ref:`ann_to_csv`
+For further instruction visit the API page; :ref:`ann_to_csv`
 
 
 Generate MDR dataset
 --------------------
 
-Easy use of the SVHN dataset in any MDR task [defined number of digit recognition or without restriction object detection]
-with digit cropping, RGB to Gray-scale conversion and number of digit limiting and etc.
+To easily use the SVHN dataset in any MDR task [defined number of digit recognition or without restrictions on object detection]
+with digit cropping, RGB to Gray-scale conversion, digit count limiting, etc.
 
 .. autofunction:: svhnl.gen_dataset
 
@@ -88,5 +88,5 @@ Code Example:
    import svhnl
    image_np, ann_dict = svhnl.gen_dataset(image_path='../data/svhn/train', mat_path='../data/svhn/train/digitStruct.mat')
 
-For further instruction follow to API page; :ref:`gen_dataset`
+For further instruction visit the API page; :ref:`gen_dataset`
 
