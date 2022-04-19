@@ -112,9 +112,9 @@ def getBbox_csv(dSBbox, n, kitti=False):
             h, y, l, t, w = [float(k) for k in elem.values()]
         if kitti:
             xmin, ymin, xmax, ymax = normalized2KITTI([l, t, w, h])
-            bbox = [xmin, ymin, xmax, ymax, y]
+            bbox = [y, xmin, ymin, xmax, ymax]
         else:
-            bbox = [l, t, w, h]
+            bbox = [y, l, t, w, h]
         bboxs.append(bbox)
     return bboxs
 
@@ -154,9 +154,10 @@ def ann_to_csv(file_path, save_path, bbox_type='normalize'):
 
     numpy_data = np.array(data_arr)
     if t:
-        cols = ['filename', 'class', 'left', 'top', 'width', 'height']
-    else:
         cols = ['filename', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
+    else:
+        cols = ['filename', 'class', 'left', 'top', 'width', 'height']
+        
     df = pd.DataFrame(data=numpy_data, columns=cols)
     df.to_csv(save_path, index=False)
 
@@ -188,7 +189,7 @@ def get_ann(img, bbox_data, img_name, i, e):
     return bboxs, im, e
 
 
-def crop_image(image, bboxs, eps=3):
+def crop_image(image, bboxs, eps=5):
     """ crop only digit containing part from the image
     bboxs = [
         [xmin, ymin, xmax, ymax],
@@ -198,7 +199,7 @@ def crop_image(image, bboxs, eps=3):
     crp_xmax = np.max(bboxs[:, 2])
     crp_ymax = np.max(bboxs[:, 3])
     crp_image = image[crp_ymin:crp_ymax, crp_xmin:crp_xmax, :]
-    return crp_image
+    return crp_image, crp_ymin, crp_xmin
 
 
 def gen_dataset(image_path, mat_path, rgb=True, min_digits=0, max_digits=6, crop=True, resize_shape=(64, 64), only_labels=False, save=False):
@@ -258,10 +259,27 @@ def gen_dataset(image_path, mat_path, rgb=True, min_digits=0, max_digits=6, crop
             if crop:
                 bboxs = np.array([list(b.values())[:-1]
                                  for b in bbox_data['boxes']])
-                img = crop_image(img, bboxs, 5)
+                img, ymin, xmin = crop_image(img, bboxs, 5)
+                for _ in box_data:
+                    _box = _['bbox']
+                    _box[0] -= xmin
+                    _box[2] -= xmin 
+                    _box[1] -= ymin
+                    _box[3] -= ymin
+                
             try:
+                w0, h0, _ = img.shape
                 img = cv2.resize(img, resize_shape,
                                  interpolation=cv2.INTER_AREA)
+                w1, h1, _ = img.shape
+                wRatio, hRatio = w1/w0, h1/h0             
+                for _ in box_data:
+                    _box = _['bbox']
+                    _box[0] *= hRatio
+                    _box[2] *= hRatio
+                    _box[1] *= wRatio
+                    _box[3] *= wRatio
+                    
             except:
                 print(img.shape, bbox_data['name'], bbox_data['boxes'])
             images.append(img)
