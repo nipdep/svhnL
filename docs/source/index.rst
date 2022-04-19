@@ -1,10 +1,10 @@
-Welcome to Lumache's documentation!
+Welcome to svhnL's documentation!
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+**svhnL** is a Python library for downloading and processing images for a multi-digit recognition (MDR) task
+under any major deep learning framework [TensorFlow, JAX, Torch]. In summary, the library provides function to 
+download, extract datasets from `the original SVHN dataset <http://ufldl.stanford.edu/housenumbers/>`_, convert annotation file format,
+and generate datasets that are specially designed for MDR tasks.
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
