@@ -4,6 +4,7 @@ import json
 import numpy as np
 import pandas as pd
 import cv2
+import math
 
 
 def normalized2KITTI(box):
@@ -220,7 +221,6 @@ def gen_dataset(image_path, mat_path, rgb=True, min_digits=0, max_digits=6, crop
         images: numpy ndarray object, with shape of [N, resize_shape, 1] <- if rgb=False, else [N, resize_shape, 3] ; where resize_shape == w,h
         annotation: numpy ndarray or python dictionary object
     """
-
     # load and filter num of labels
     data_dict = mat73.loadmat(mat_path)
     dSName = data_dict['digitStruct']['name']
@@ -242,10 +242,6 @@ def gen_dataset(image_path, mat_path, rgb=True, min_digits=0, max_digits=6, crop
         l = len(bbox_data['boxes'])
         if (l < max_digits) and (l > min_digits):
             img = cv2.imread(f"{image_path}/{bbox_data['name']}")
-            if rgb:
-                img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            else:
-                img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
             if only_labels:
                 labels = [bbox_data['boxes']['label'] for _ in range(l)]
@@ -279,9 +275,16 @@ def gen_dataset(image_path, mat_path, rgb=True, min_digits=0, max_digits=6, crop
                     _box[2] *= hRatio
                     _box[1] *= wRatio
                     _box[3] *= wRatio
+                    _box = [math.floor(i) for i in _box]
                     
             except:
                 print(img.shape, bbox_data['name'], bbox_data['boxes'])
+
+            if rgb:
+                img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            else:
+                img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                
             images.append(img)
 
     if save:
@@ -293,7 +296,7 @@ def gen_dataset(image_path, mat_path, rgb=True, min_digits=0, max_digits=6, crop
                 np.save(pf, np.array(annotation))
 
         else:
-            with open('./labels.json', 'w', encoding='utf-8'):
+            with open('./labels.json', 'w', encoding='utf-8') as pf:
                 json.dump(annotation, pf, ensure_ascii=True, indent=4)
 
     if only_labels:
